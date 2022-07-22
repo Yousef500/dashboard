@@ -12,3 +12,6 @@ const cacheRtl = createCache({
 function RTL(props) {
   return <CacheProvider value={cacheRtl}>{props.children}</CacheProvider>;
 }
+
+
+export default RTL;

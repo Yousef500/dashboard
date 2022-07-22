@@ -1,33 +1,25 @@
 // routes
-import createCache from '@emotion/cache';
-import { CacheProvider } from '@emotion/react';
 import { Box } from '@mui/material';
-import { prefixer } from 'stylis';
-import rtlPlugin from 'stylis-plugin-rtl';
 import Router from './routes';
 // theme
 import ThemeProvider from './theme';
 // components
 import { BaseOptionChartStyle } from './components/chart/BaseOptionChart';
 import ScrollToTop from './components/ScrollToTop';
+import RTL from './theme/cache';
 
 // ----------------------------------------------------------------------
 
-const cacheRtl = createCache({
-  key: 'muirtl',
-  stylisPlugins: [prefixer, rtlPlugin],
-});
-
 export default function App() {
   return (
-    <CacheProvider value={cacheRtl}>
+    <RTL>
       <ThemeProvider>
         <ScrollToTop />
         <BaseOptionChartStyle />
-        <Box dir="rtl">
+        <Box>
           <Router />
         </Box>
       </ThemeProvider>
-    </CacheProvider>
+    </RTL>
   );
 }
